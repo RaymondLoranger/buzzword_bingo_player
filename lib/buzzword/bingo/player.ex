@@ -22,7 +22,7 @@ defmodule Buzzword.Bingo.Player do
         }
 
   @doc """
-  Creates a player with the given `name` and `color`.
+  Creates a `player` with the given `name` and `color`.
 
   ## Examples
 
