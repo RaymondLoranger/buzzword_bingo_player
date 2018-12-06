@@ -7,7 +7,7 @@ defmodule Buzzword.Bingo.Player do
   @course_ref Application.get_env(@app, :course_ref)
 
   @moduledoc """
-  Creates a `player` struct.
+  Creates a `player` struct for the _Multi-Player Bingo_ game.
   \n##### #{@course_ref}
   """
 
