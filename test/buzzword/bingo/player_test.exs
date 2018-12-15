@@ -31,5 +31,10 @@ defmodule Buzzword.Bingo.PlayerTest do
         end == {:error, :invalid_player_args}
       )
     end
+
+    test "can be encoded by Poison" do
+      jim = Player.new("Jim", "cyan")
+      assert Poison.encode!(jim) == ~s<{"name":"Jim","color":"cyan"}>
+    end
   end
 end
