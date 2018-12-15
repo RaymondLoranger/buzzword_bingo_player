@@ -23,6 +23,7 @@ defmodule Buzzword.Bingo.Player.MixProject do
     [
       {:mix_tasks,
        github: "RaymondLoranger/mix_tasks", only: :dev, runtime: false},
+      {:poison, "~> 3.1"},
       {:persist_config, "~> 0.1"},
       {:earmark, "~> 1.0", only: :dev},
       {:ex_doc, "~> 0.14", only: :dev, runtime: false},
