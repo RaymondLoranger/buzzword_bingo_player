@@ -36,5 +36,10 @@ defmodule Buzzword.Bingo.PlayerTest do
       jim = Player.new("Jim", "cyan")
       assert Poison.encode!(jim) == ~s<{"name":"Jim","color":"cyan"}>
     end
+
+    test "can be encoded by Jason" do
+      jim = Player.new("Jim", "cyan")
+      assert Jason.encode!(jim) == ~s<{"color":"cyan","name":"Jim"}>
+    end
   end
 end
