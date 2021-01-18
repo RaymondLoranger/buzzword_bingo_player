@@ -15,9 +15,11 @@ defmodule Buzzword.Bingo.Player do
   @enforce_keys [:name, :color]
   defstruct [:name, :color]
 
+  @type color :: String.t()
+  @type name :: String.t()
   @type t :: %Player{
-          name: String.t(),
-          color: String.t()
+          name: name,
+          color: color
         }
 
   @doc """
@@ -37,7 +39,7 @@ defmodule Buzzword.Bingo.Player do
       iex> Player.new("Jane", 'red')
       {:error, :invalid_player_args}
   """
-  @spec new(String.t(), String.t()) :: t | {:error, atom}
+  @spec new(name, color) :: t | {:error, atom}
   def new(name, color) when is_binary(name) and is_binary(color) do
     %Player{name: name, color: color}
   end
