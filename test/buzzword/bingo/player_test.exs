@@ -28,10 +28,46 @@ defmodule Buzzword.Bingo.PlayerTest do
       jay: %{"name" => "Jay", "color" => "rgb(211, 197, 241)"}
     }
 
+    interpolated = %{
+      jim: ~s|%Buzzword.Bingo.Player{color: "cyan", name: "Jim"}|,
+      joe: ~s|%Buzzword.Bingo.Player{color: "#d3c5f1", name: "Joe"}|,
+      jay: ~s|%Buzzword.Bingo.Player{color: "rgb(211, 197, 241)", name: "Jay"}|
+    }
+
     %{
-      players: %{jim: jim, joe: joe, jay: jay},
+      players: %{jim: jim, joe: joe, jay: jay, interpolated: interpolated},
       json: %{poison: poison, jason: jason, decoded: decoded}
     }
+  end
+
+  describe "A player struct" do
+    test "can be encoded by Poison", %{players: players, json: json} do
+      assert Poison.encode!(players.jim) == json.poison.jim
+      assert Poison.decode!(json.poison.jim) == json.decoded.jim
+
+      assert Poison.encode!(players.joe) == json.poison.joe
+      assert Poison.decode!(json.poison.joe) == json.decoded.joe
+
+      assert Poison.encode!(players.jay) == json.poison.jay
+      assert Poison.decode!(json.poison.jay) == json.decoded.jay
+    end
+
+    test "can be encoded by Jason", %{players: players, json: json} do
+      assert Jason.encode!(players.jim) == json.jason.jim
+      assert Jason.decode!(json.jason.jim) == json.decoded.jim
+
+      assert Jason.encode!(players.joe) == json.jason.joe
+      assert Jason.decode!(json.jason.joe) == json.decoded.joe
+
+      assert Jason.encode!(players.jay) == json.jason.jay
+      assert Jason.decode!(json.jason.jay) == json.decoded.jay
+    end
+
+    test "supports string interpolation", %{players: players} do
+      assert "#{players.jim}" == players.interpolated.jim
+      assert "#{players.joe}" == players.interpolated.joe
+      assert "#{players.jay}" == players.interpolated.jay
+    end
   end
 
   describe "Player.new/2" do
@@ -59,28 +95,6 @@ defmodule Buzzword.Bingo.PlayerTest do
           error -> error
         end == {:error, :invalid_player_args}
       )
-    end
-
-    test "can be encoded by Poison", %{players: players, json: json} do
-      assert Poison.encode!(players.jim) == json.poison.jim
-      assert Poison.decode!(json.poison.jim) == json.decoded.jim
-
-      assert Poison.encode!(players.joe) == json.poison.joe
-      assert Poison.decode!(json.poison.joe) == json.decoded.joe
-
-      assert Poison.encode!(players.jay) == json.poison.jay
-      assert Poison.decode!(json.poison.jay) == json.decoded.jay
-    end
-
-    test "can be encoded by Jason", %{players: players, json: json} do
-      assert Jason.encode!(players.jim) == json.jason.jim
-      assert Jason.decode!(json.jason.jim) == json.decoded.jim
-
-      assert Jason.encode!(players.joe) == json.jason.joe
-      assert Jason.decode!(json.jason.joe) == json.decoded.joe
-
-      assert Jason.encode!(players.jay) == json.jason.jay
-      assert Jason.decode!(json.jason.jay) == json.decoded.jay
     end
   end
 end

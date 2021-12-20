@@ -46,8 +46,10 @@ defmodule Buzzword.Bingo.Player do
 
   def new(_name, _color), do: {:error, :invalid_player_args}
 
-  # Required by Buzzword.Bingo.Game.scores: %{Player.t() => player_score}
+  ## Helpers
+
   defimpl String.Chars, for: Player do
-    def to_string(player), do: "#{inspect(player)}"
+    @spec to_string(Player.t()) :: String.t()
+    def to_string(%Player{} = player), do: inspect(player)
   end
 end
