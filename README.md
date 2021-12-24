@@ -1,6 +1,6 @@
 # Buzzword Bingo Player
 
-Creates a _player_ struct for the _Multi-Player Bingo_ game.
+Creates a player struct for the _Multi-Player Bingo_ game.
 
 ##### Based on the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
 

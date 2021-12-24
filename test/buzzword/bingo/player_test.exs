@@ -71,11 +71,11 @@ defmodule Buzzword.Bingo.PlayerTest do
   end
 
   describe "Player.new/2" do
-    test "returns a struct" do
+    test "returns a player struct" do
       assert Player.new("Joe", "blue") == %Player{name: "Joe", color: "blue"}
     end
 
-    test "returns a struct in a `with` macro" do
+    test "returns a player struct in a `with` macro" do
       assert(
         with %Player{} = player <- Player.new("Joe", "blue") do
           player
@@ -83,11 +83,11 @@ defmodule Buzzword.Bingo.PlayerTest do
       )
     end
 
-    test "returns a tuple" do
+    test "returns an error tuple" do
       assert Player.new("Jim", :red) == {:error, :invalid_player_args}
     end
 
-    test "returns a tuple in a 'with' macro" do
+    test "returns an error tuple in a 'with' macro" do
       assert(
         with %Player{} = player <- Player.new("Jim", :red) do
           player

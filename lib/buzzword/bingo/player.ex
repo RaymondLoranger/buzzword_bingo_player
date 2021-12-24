@@ -3,7 +3,7 @@
 # └────────────────────────────────────────────────────────────────────┘
 defmodule Buzzword.Bingo.Player do
   @moduledoc """
-  Creates a _player_ struct for the _Multi-Player Bingo_ game.
+  Creates a player struct for the _Multi-Player Bingo_ game.
 
   ##### Based on the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
   """
@@ -23,7 +23,7 @@ defmodule Buzzword.Bingo.Player do
         }
 
   @doc """
-  Creates a _player_ struct with the given `name` and `color`.
+  Creates a player struct with the given `name` and `color`.
 
   ## Examples
 
