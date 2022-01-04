@@ -5,6 +5,9 @@ defmodule Buzzword.Bingo.Player do
   @moduledoc """
   Creates a player struct for the _Multi-Player Bingo_ game.
 
+  The player struct contains the fields `name` and `color` representing the
+  characteristics of a player in the _Multi-Player Bingo_ game.
+
   ##### Based on the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
   """
 
@@ -15,8 +18,11 @@ defmodule Buzzword.Bingo.Player do
   @enforce_keys [:name, :color]
   defstruct [:name, :color]
 
+  @typedoc "Player's color"
   @type color :: String.t()
+  @typedoc "Player's name"
   @type name :: String.t()
+  @typedoc "A player struct for the Multi-Player Bingo game"
   @type t :: %Player{
           name: name,
           color: color
