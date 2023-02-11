@@ -29,9 +29,9 @@ defmodule Buzzword.Bingo.PlayerTest do
     }
 
     interpolated = %{
-      jim: ~s|%Buzzword.Bingo.Player{color: "cyan", name: "Jim"}|,
-      joe: ~s|%Buzzword.Bingo.Player{color: "#d3c5f1", name: "Joe"}|,
-      jay: ~s|%Buzzword.Bingo.Player{color: "rgb(211, 197, 241)", name: "Jay"}|
+      jim: ~s|%Buzzword.Bingo.Player{name: "Jim", color: "cyan"}|,
+      joe: ~s|%Buzzword.Bingo.Player{name: "Joe", color: "#d3c5f1"}|,
+      jay: ~s|%Buzzword.Bingo.Player{name: "Jay", color: "rgb(211, 197, 241)"}|
     }
 
     %{
