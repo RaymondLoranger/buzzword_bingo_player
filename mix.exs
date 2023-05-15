@@ -4,7 +4,7 @@ defmodule Buzzword.Bingo.Player.MixProject do
   def project do
     [
       app: :buzzword_bingo_player,
-      version: "0.1.2",
+      version: "0.1.3",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Buzzword Bingo Player",
@@ -21,7 +21,7 @@ defmodule Buzzword.Bingo.Player.MixProject do
 
   defp description do
     """
-    Creates a player struct for the Multi-Player Bingo game.
+    Creates a player struct for the Multi-Player Buzzword Bingo game.
     """
   end
 
