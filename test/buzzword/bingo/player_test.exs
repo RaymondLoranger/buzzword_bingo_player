@@ -11,15 +11,15 @@ defmodule Buzzword.Bingo.PlayerTest do
     jay = Player.new("Jay", "rgb(211, 197, 241)")
 
     poison = %{
-      jim: ~s<{"name":"Jim","color":"cyan"}>,
-      joe: ~s<{"name":"Joe","color":"#d3c5f1"}>,
-      jay: ~s<{"name":"Jay","color":"rgb(211, 197, 241)"}>
-    }
-
-    jason = %{
       jim: ~s<{"color":"cyan","name":"Jim"}>,
       joe: ~s<{"color":"#d3c5f1","name":"Joe"}>,
       jay: ~s<{"color":"rgb(211, 197, 241)","name":"Jay"}>
+    }
+
+    jason = %{
+      jim: ~s<{"name":"Jim","color":"cyan"}>,
+      joe: ~s<{"name":"Joe","color":"#d3c5f1"}>,
+      jay: ~s<{"name":"Jay","color":"rgb(211, 197, 241)"}>
     }
 
     decoded = %{
