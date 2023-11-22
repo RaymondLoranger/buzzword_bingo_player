@@ -10,12 +10,6 @@ defmodule Buzzword.Bingo.PlayerTest do
     joe = Player.new("Joe", "#d3c5f1")
     jay = Player.new("Jay", "rgb(211, 197, 241)")
 
-    poison = %{
-      jim: ~s<{"color":"cyan","name":"Jim"}>,
-      joe: ~s<{"color":"#d3c5f1","name":"Joe"}>,
-      jay: ~s<{"color":"rgb(211, 197, 241)","name":"Jay"}>
-    }
-
     jason = %{
       jim: ~s<{"name":"Jim","color":"cyan"}>,
       joe: ~s<{"name":"Joe","color":"#d3c5f1"}>,
@@ -36,22 +30,11 @@ defmodule Buzzword.Bingo.PlayerTest do
 
     %{
       players: %{jim: jim, joe: joe, jay: jay, interpolated: interpolated},
-      json: %{poison: poison, jason: jason, decoded: decoded}
+      json: %{jason: jason, decoded: decoded}
     }
   end
 
   describe "A player struct" do
-    test "can be encoded by Poison", %{players: players, json: json} do
-      assert Poison.encode!(players.jim) == json.poison.jim
-      assert Poison.decode!(json.poison.jim) == json.decoded.jim
-
-      assert Poison.encode!(players.joe) == json.poison.joe
-      assert Poison.decode!(json.poison.joe) == json.decoded.joe
-
-      assert Poison.encode!(players.jay) == json.poison.jay
-      assert Poison.decode!(json.poison.jay) == json.decoded.jay
-    end
-
     test "can be encoded by Jason", %{players: players, json: json} do
       assert Jason.encode!(players.jim) == json.jason.jim
       assert Jason.decode!(json.jason.jim) == json.decoded.jim
