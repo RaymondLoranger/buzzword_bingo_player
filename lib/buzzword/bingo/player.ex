@@ -41,7 +41,7 @@ defmodule Buzzword.Bingo.Player do
       %Player{name: "Jimmy", color: "deep_sky_blue"}
 
       iex> alias Buzzword.Bingo.Player
-      iex> Player.new("Jane", 'red')
+      iex> Player.new("Jane", :red)
       {:error, :invalid_player_args}
   """
   @spec new(name, color) :: t | {:error, atom}
