@@ -13,7 +13,7 @@ defmodule Buzzword.Bingo.Player do
 
   alias __MODULE__
 
-  @derive Jason.Encoder
+  @derive JSON.Encoder
   @enforce_keys [:name, :color]
   defstruct [:name, :color]
 
@@ -22,10 +22,7 @@ defmodule Buzzword.Bingo.Player do
   @typedoc "Player's name"
   @type name :: String.t()
   @typedoc "A player struct for the Multi-Player Buzzword Bingo game"
-  @type t :: %Player{
-          name: name,
-          color: color
-        }
+  @type t :: %Player{name: name, color: color}
 
   @doc """
   Creates a player struct with the given `name` and `color`.

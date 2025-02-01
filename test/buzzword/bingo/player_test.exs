@@ -8,42 +8,42 @@ defmodule Buzzword.Bingo.PlayerTest do
   setup_all do
     jim = Player.new("Jim", "cyan")
     joe = Player.new("Joe", "#d3c5f1")
-    jay = Player.new("Jay", "rgb(211, 197, 241)")
+    jay = Player.new("Jay", "rgb(211, 97, 41)")
 
-    jason = %{
+    encoded = %{
       jim: ~s<{"name":"Jim","color":"cyan"}>,
       joe: ~s<{"name":"Joe","color":"#d3c5f1"}>,
-      jay: ~s<{"name":"Jay","color":"rgb(211, 197, 241)"}>
+      jay: ~s<{"name":"Jay","color":"rgb(211, 97, 41)"}>
     }
 
     decoded = %{
       jim: %{"name" => "Jim", "color" => "cyan"},
       joe: %{"name" => "Joe", "color" => "#d3c5f1"},
-      jay: %{"name" => "Jay", "color" => "rgb(211, 197, 241)"}
+      jay: %{"name" => "Jay", "color" => "rgb(211, 97, 41)"}
     }
 
     interpolated = %{
       jim: ~s|%Buzzword.Bingo.Player{name: "Jim", color: "cyan"}|,
       joe: ~s|%Buzzword.Bingo.Player{name: "Joe", color: "#d3c5f1"}|,
-      jay: ~s|%Buzzword.Bingo.Player{name: "Jay", color: "rgb(211, 197, 241)"}|
+      jay: ~s|%Buzzword.Bingo.Player{name: "Jay", color: "rgb(211, 97, 41)"}|
     }
 
     %{
       players: %{jim: jim, joe: joe, jay: jay, interpolated: interpolated},
-      json: %{jason: jason, decoded: decoded}
+      json: %{encoded: encoded, decoded: decoded}
     }
   end
 
   describe "A player struct" do
-    test "can be encoded by Jason", %{players: players, json: json} do
-      assert Jason.encode!(players.jim) == json.jason.jim
-      assert Jason.decode!(json.jason.jim) == json.decoded.jim
+    test "can be encoded by JSON", %{players: players, json: json} do
+      assert JSON.encode!(players.jim) == json.encoded.jim
+      assert JSON.decode!(json.encoded.jim) == json.decoded.jim
 
-      assert Jason.encode!(players.joe) == json.jason.joe
-      assert Jason.decode!(json.jason.joe) == json.decoded.joe
+      assert JSON.encode!(players.joe) == json.encoded.joe
+      assert JSON.decode!(json.encoded.joe) == json.decoded.joe
 
-      assert Jason.encode!(players.jay) == json.jason.jay
-      assert Jason.decode!(json.jason.jay) == json.decoded.jay
+      assert JSON.encode!(players.jay) == json.encoded.jay
+      assert JSON.decode!(json.encoded.jay) == json.decoded.jay
     end
 
     test "supports string interpolation", %{players: players} do
