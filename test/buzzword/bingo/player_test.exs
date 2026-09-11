@@ -69,15 +69,5 @@ defmodule Buzzword.Bingo.PlayerTest do
     test "returns an error tuple" do
       assert Player.new("Jim", :red) == {:error, :invalid_player_args}
     end
-
-    test "returns an error tuple in a 'with' macro" do
-      assert(
-        with %Player{} = player <- Player.new("Jim", :red) do
-          player
-        else
-          error -> error
-        end == {:error, :invalid_player_args}
-      )
-    end
   end
 end
